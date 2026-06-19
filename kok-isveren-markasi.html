@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Kök Topluluğu — Aynı Kökten, Kendi Yolumuzda</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1F3024;
+    --cream:#F2EDE3;
+    --clay:#A8693F;
+    --sage:#8FA383;
+    --charcoal:#262420;
+    --gold:#C9A24B;
+    --line:rgba(38,36,32,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'Work Sans',sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--clay);
+  }
+  a{color:inherit;text-decoration:none;}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1.4rem 6%;
+    background:rgba(242,237,227,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .logo{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;display:flex;align-items:center;gap:0.5rem;}
+  .logo svg{width:22px;height:22px;}
+  nav ul{display:flex;gap:2.2rem;list-style:none;font-size:0.9rem;}
+  nav ul a{opacity:0.75;transition:opacity .2s;}
+  nav ul a:hover{opacity:1;}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    padding:8rem 6% 4rem;
+    background:var(--forest);
+    color:var(--cream);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:3rem;align-items:center;width:100%;
+    position:relative;z-index:2;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,5.2vw,4.4rem);
+    line-height:1.06;
+    color:var(--cream);
+  }
+  .hero h1 em{font-style:italic;color:var(--gold);}
+  .hero p.lead{
+    margin-top:1.6rem;font-size:1.15rem;max-width:34ch;color:rgba(242,237,227,0.78);
+  }
+  .hero .eyebrow{color:var(--sage);margin-bottom:1.2rem;display:inline-block;}
+  .cta-row{margin-top:2.4rem;display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn{
+    padding:0.85rem 1.7rem;border-radius:2px;font-size:0.92rem;font-weight:500;
+    border:1px solid var(--gold);transition:all .25s;display:inline-block;
+  }
+  .btn-primary{background:var(--gold);color:var(--forest);}
+  .btn-primary:hover{background:transparent;color:var(--gold);}
+  .btn-ghost{color:var(--cream);border-color:rgba(242,237,227,0.4);}
+  .btn-ghost:hover{border-color:var(--cream);}
+
+  /* root svg in hero */
+  .root-wrap{position:relative;}
+  .root-wrap svg{width:100%;height:auto;}
+  .root-wrap path{
+    stroke:var(--sage);
+    stroke-width:1.4;
+    fill:none;
+    stroke-dasharray:4 5000;
+    stroke-dashoffset:0;
+    animation:grow 3.2s ease forwards;
+  }
+  .root-wrap circle{
+    fill:var(--gold);
+    opacity:0;
+    animation:dotIn 0.6s ease forwards;
+  }
+  @keyframes grow{
+    from{stroke-dasharray:0 5000;}
+    to{stroke-dasharray:5000 5000;}
+  }
+  @keyframes dotIn{to{opacity:1;}}
+
+  /* SECTION shared */
+  section{padding:6.5rem 6%;}
+  .section-head{max-width:640px;margin-bottom:3.4rem;}
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-top:0.6rem;}
+
+  /* PILLARS - asymmetric */
+  .pillars{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    grid-auto-rows:minmax(160px,auto);
+    gap:1.2rem;
+  }
+  .pillar{
+    border:1px solid var(--line);
+    background:#fff;
+    padding:2rem 1.8rem;
+    position:relative;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .pillar:hover{transform:translateY(-4px);box-shadow:0 14px 30px -18px rgba(38,36,32,0.35);}
+  .pillar .num{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--clay);}
+  .pillar h3{font-size:1.25rem;margin:0.9rem 0 0.6rem;}
+  .pillar p{font-size:0.93rem;color:rgba(38,36,32,0.72);}
+  .p1{grid-column:span 3;grid-row:span 1;background:var(--forest);color:var(--cream);}
+  .p1 .num{color:var(--sage);}
+  .p1 p{color:rgba(242,237,227,0.75);}
+  .p2{grid-column:span 3;}
+  .p3{grid-column:span 2;}
+  .p4{grid-column:span 2;background:var(--clay);color:var(--cream);}
+  .p4 .num{color:rgba(242,237,227,0.7);}
+  .p4 p{color:rgba(242,237,227,0.85);}
+  .p5{grid-column:span 2;}
+  @media (max-width:880px){
+    .pillars{grid-template-columns:1fr;}
+    .p1,.p2,.p3,.p4,.p5{grid-column:span 1;}
+  }
+
+  /* VIDEO */
+  .video-sec{background:var(--forest);color:var(--cream);}
+  .video-sec .section-head{color:var(--cream);}
+  .video-frame{
+    position:relative;border-radius:4px;overflow:hidden;
+    border:1px solid rgba(242,237,227,0.18);
+    aspect-ratio:16/9;background:#10180f;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .video-frame iframe{width:100%;height:100%;border:0;}
+  .video-frame .placeholder{
+    text-align:center;color:rgba(242,237,227,0.55);font-size:0.95rem;padding:2rem;
+  }
+  .video-frame .placeholder .eyebrow{display:block;margin-bottom:0.6rem;}
+
+  /* CULTURE STRIP */
+  .culture{
+    display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;
+  }
+  .culture .stat{
+    font-family:'Fraunces',serif;font-size:2.6rem;color:var(--clay);line-height:1;
+  }
+  .culture-list{display:flex;flex-direction:column;gap:1.6rem;margin-top:1.5rem;}
+  .culture-list .item{border-top:1px solid var(--line);padding-top:1.2rem;}
+  @media (max-width:800px){.culture{grid-template-columns:1fr;}}
+
+  /* CTA */
+  .cta-final{
+    background:var(--charcoal);color:var(--cream);text-align:center;
+    padding:7rem 6%;
+  }
+  .cta-final h2{font-size:clamp(2rem,4.4vw,3.2rem);color:var(--cream);margin-bottom:1.4rem;}
+  .cta-final p{color:rgba(242,237,227,0.7);max-width:42ch;margin:0 auto 2.2rem;}
+
+  footer{
+    padding:2.2rem 6%;display:flex;justify-content:space-between;
+    font-size:0.82rem;color:rgba(38,36,32,0.55);border-top:1px solid var(--line);
+  }
+
+  @media (max-width:880px){
+    .hero-grid{grid-template-columns:1fr;}
+    .root-wrap{order:-1;max-width:320px;margin:0 auto;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <svg viewBox="0 0 24 24"><path d="M12 2 L12 12 M12 12 L6 20 M12 12 L18 20 M12 7 L8 9 M12 9 L16 11" stroke="#C9A24B" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+    Kök
+  </div>
+  <ul>
+    <li><a href="#pillars">Neden Kök</a></li>
+    <li><a href="#video">Hikayemiz</a></li>
+    <li><a href="#culture">Kültürümüz</a></li>
+    <li><a href="#join">Bize Katıl</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">İşveren Markası — Kök Topluluğu</span>
+      <h1>Aynı <em>kökten</em> büyürüz,<br>kendi yolumuzda çalışırız.</h1>
+      <p class="lead">Kök, sürdürülebilir tarım-gıda alanında çalışan bir şirket. Ortak değerlerin, aynı çalışma şeklini gerektirmediğine inanıyoruz. Biz etki ekeriz, mesai saati değil.</p>
+      <div class="cta-row">
+        <a href="#join" class="btn btn-primary">Açık Pozisyonları Gör</a>
+        <a href="#pillars" class="btn btn-ghost">Neden Kök</a>
+      </div>
+    </div>
+    <div class="root-wrap">
+      <svg viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg">
+        <path d="M160 20 L160 140" style="animation-delay:0s"/>
+        <path d="M160 140 L90 230 L60 320" style="animation-delay:.2s"/>
+        <path d="M160 140 L160 240 L150 340" style="animation-delay:.4s"/>
+        <path d="M160 140 L230 220 L260 310" style="animation-delay:.6s"/>
+        <path d="M160 140 L120 190" style="animation-delay:.3s"/>
+        <path d="M160 140 L205 185" style="animation-delay:.5s"/>
+        <circle cx="160" cy="20" r="5" style="animation-delay:2.8s"/>
+        <circle cx="60" cy="320" r="5" style="animation-delay:3s"/>
+        <circle cx="150" cy="340" r="5" style="animation-delay:3.1s"/>
+        <circle cx="260" cy="310" r="5" style="animation-delay:3.2s"/>
+        <circle cx="120" cy="190" r="3.5" style="animation-delay:2.6s"/>
+        <circle cx="205" cy="185" r="3.5" style="animation-delay:2.7s"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="pillars">
+  <div class="section-head">
+    <span class="eyebrow">Çalışan Değer Önerisi</span>
+    <h2>Çalışma şeklimizi taşıyan beş kök</h2>
+  </div>
+  <div class="pillars">
+    <div class="pillar p1">
+      <span class="num">01</span>
+      <h3>Amaçlı Esneklik</h3>
+      <p>İstediğin yerden çalış; iş birliği için ortak çekirdek saatler, bireysel odaklanma için esnek zaman — net sınırlar, ama katı değil.</p>
+    </div>
+    <div class="pillar p2">
+      <span class="num">02</span>
+      <h3>Mentorluk Üzerine İnşa Edilen Gelişim</h3>
+      <p>Herkesin ekipler arası bir mentoru ve sürdürülebilirlik projelerinde rotasyon imkânı var — kâğıt üzerinde unvan basamakları değil.</p>
+    </div>
+    <div class="pillar p3">
+      <span class="num">03</span>
+      <h3>Ölçülebilir Etki</h3>
+      <p>Her çeyrekte şeffaf etki raporu — şirketin sürdürülebilirlik hedeflerine katkını tam olarak görürsün.</p>
+    </div>
+    <div class="pillar p4">
+      <span class="num">04</span>
+      <h3>Adil ve Şeffaf Ödüllendirme</h3>
+      <p>Açık maaş yapısı ve sattığımız sürdürülebilir ürünlerden kâr paylaşımı.</p>
+    </div>
+    <div class="pillar p5">
+      <span class="num">05</span>
+      <h3>Nefes Alan Bir Kültür</h3>
+      <p>Düz hiyerarşi, asenkron iletişime açık yapı ve gerçek ruh sağlığı desteği — duvardaki bir poster değil.</p>
+    </div>
+  </div>
+</section>
+
+<section id="video" class="video-sec">
+  <div class="section-head">
+    <span class="eyebrow">İçeriden Bir Hikaye</span>
+    <h2>Kök'te büyümek nasıl bir his</h2>
+  </div>
+  <div class="video-frame">
+    <!-- Videonu hazırladıktan sonra aşağıdaki src'yi kendi linkinle (YouTube/Drive embed) değiştir, veya iframe yerine <video> etiketi kullan -->
+    <div class="placeholder">
+      <span class="eyebrow">Videonu buraya yerleştir</span>
+      Bu bloğu &lt;iframe src="VIDEO_LINKIN"&gt; veya &lt;video&gt; etiketiyle değiştir
+    </div>
+  </div>
+</section>
+
+<section id="culture">
+  <div class="culture">
+    <div>
+      <span class="eyebrow">Çalışma Kültürü</span>
+      <h2>Rahat bir ofis değil, sınırları net bir ofis</h2>
+      <p style="margin-top:1.2rem;color:rgba(38,36,32,0.72);max-width:40ch;">İş-yaşam dengesinin, ofis imkânlarından değil, iş rolü ile kişisel rol arasında bilinçle müzakere edilen sınırlardan doğduğuna inanıyoruz.</p>
+    </div>
+    <div class="culture-list">
+      <div class="item">
+        <div class="stat">4 gün</div>
+        <p>Çekirdek çalışma haftası; beşinci gün kişisel gelişim veya seçtiğin bir sürdürülebilirlik araştırma projesine ayrılır.</p>
+      </div>
+      <div class="item">
+        <div class="stat">0 katman</div>
+        <p>Aşırı onay katmanı yok — operasyonel kararlar uzun bir komuta zincirini beklemeden ekip seviyesinde alınır.</p>
+      </div>
+      <div class="item">
+        <div class="stat">%100</div>
+        <p>Etki şeffaflığı: her çalışan, şirketin sürdürülebilirlik hedeflerini gösteren panoya gerçek zamanlı erişime sahip.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="join" class="cta-final">
+  <span class="eyebrow" style="color:var(--gold);">Bize Katıl</span>
+  <h2>Kök ile birlikte büyü</h2>
+  <p>İşin değerinin masada geçirilen saatten değil, yarattığı etkiden ölçüldüğüne inanan insanları arıyoruz.</p>
+  <a href="#" class="btn btn-primary">Açık Pozisyonları Gör</a>
+</section>
+
+<footer>
+  <span>Kök Topluluğu — İşveren Markası Projesi</span>
+  <span>Final Projesi, 2026</span>
+</footer>
+
+</body>
+</html>
